@@ -1,0 +1,27 @@
+version: "3"
+services:
+  postgres_mqtt_ia_concept:
+      container_name: postgres_mqtt_ia_concept
+      restart: always
+      build: 
+          context: ./postgres/
+          dockerfile: postgres.Dockerfile
+      environment:
+          POSTGRES_USER: root 
+          POSTGRES_PASSWORD: postgres
+          PGDATA : /var/lib/postgresql/data/mqtt_ia/l
+      ports: 
+          - '5432:5432'
+  rabbitmq:
+    container_name: mqtt_ia_rabbitmq
+    build:
+      context: ./rabbitmq/
+      dockerfile: rabbitmq.Dockerfile
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+      - RABBITMQ_DEFAULT_VHOST=${RABBITMQ_DEFAULT_VHOST}
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+      - "1883:1883"

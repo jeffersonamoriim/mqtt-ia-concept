@@ -1,0 +1,1 @@
+CREATE DATABASE mqtt_ia_concept;
