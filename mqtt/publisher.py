@@ -9,12 +9,10 @@ channel = connection.channel()
 
 channel.queue_declare(queue='input_data', durable=True)
 
-value = 50
 i = 0
 ids =(1, 2)
 while (i < 100):
-    valueChange = random.randint(-5, 5)
-    value = value + valueChange
+    value = random.randint(40, 50)
     dict_msg = {
         "device": random.choice(list(ids)),
         "value": value,

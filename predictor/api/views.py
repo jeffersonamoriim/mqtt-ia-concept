@@ -7,5 +7,10 @@ class DeviceList(generics.ListCreateAPIView):
     serializer_class = DeviceSerializer
 
 class InputDataList(generics.ListCreateAPIView):
-    queryset = InputData.objects.all()
     serializer_class = InputDataSerializer
+    def get_queryset(self):
+        queryset = InputData.objects.all()
+        device = self.request.query_params.get('device', None)
+        if device is not None:
+            queryset = queryset.filter(device=device)
+        return queryset
