@@ -9,6 +9,8 @@
 
 ### 🏠 [Homepage](https://github.com/jeffersonamoriim/mqtt-ia-concept#readme)
 
+> Mqtt-ia-concept it's an project thats concepts an architecture idea of devices sendind data with mqtt to rabbitmq and create linear regression events that provides predictions to this devices
+
 ## Install
 
 > Change .env-example to .env to all services run properly
@@ -38,7 +40,7 @@
 
 > After this go to http://localhost:8000/devices and create two devices
 
-## To publish data in rabbitmq and consume and send to postgres run
+## Publish and consume data from rabbitmq
 
 ```sh
   python mqtt/publisher.py
